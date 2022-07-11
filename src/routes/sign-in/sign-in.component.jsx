@@ -1,15 +1,56 @@
-import React from "react";
+import { useState } from "react";
 import Button from "../../components/button/button.component";
+import FormInput from "../../components/form-input/form-input.component";
+import {
+  SignInContainer,
+  SignInText,
+  SignInTitle,
+  SignInDescription,
+  SignInForm,
+} from "./sign-in.styles";
+
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
 
 const SignIn = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormFields({ ...formFields, [name]: value });
+  };
   return (
-    <div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
-        reiciendis!
-      </p>
-      <Button>Sign in</Button>
-    </div>
+    <SignInContainer>
+      <SignInText>
+        <SignInTitle>Login</SignInTitle>
+        <SignInDescription>
+          Get access to your Orders, Wishlist and Recommendation.
+        </SignInDescription>
+      </SignInText>
+      <SignInForm>
+        <FormInput
+          label="Email"
+          type="email"
+          onChange={handleChange}
+          name="email"
+          value={email}
+        />
+        <FormInput
+          label="Password"
+          type="password"
+          onChange={handleChange}
+          name="password"
+          value={password}
+        />
+        <Button>Sign in</Button>
+      </SignInForm>
+    </SignInContainer>
   );
 };
 
