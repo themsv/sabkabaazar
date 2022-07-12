@@ -5,7 +5,7 @@ export const NavigationContainer = styled.header`
   height: 80px;
   margin-bottom: 25px;
   padding: 0 46px;
-  background-color: #339af0;
+  background-color: #f59f00;
   display: flex;
   justify-content: space-between;
   align-items: center;
