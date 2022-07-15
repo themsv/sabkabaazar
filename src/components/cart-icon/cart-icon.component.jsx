@@ -1,8 +1,12 @@
 import { ReactComponent } from "../../assets/cart.svg";
 import styled from "styled-components";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { useContext } from "react";
-import { CartContext } from "../../context/cart.context";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectIsCartOpen,
+  selectCartCount,
+} from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 const CartIconContainer = styled.div`
   display: flex;
@@ -20,10 +24,12 @@ const Logo = styled(ReactComponent)`
 `;
 
 const CartIcon = () => {
-  const { cartCount, isCartOpen, setIsCartOpen } = useContext(CartContext);
-
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const cartCount = useSelector(selectCartCount);
+  const dispatch = useDispatch();
+  const toggleIsCartOpen = () => dispatch(setIsCartOpen(!isCartOpen));
   return (
-    <CartIconContainer onClick={() => setIsCartOpen(!isCartOpen)}>
+    <CartIconContainer onClick={toggleIsCartOpen}>
       <Logo />
       <p>{cartCount} Items</p>
       {isCartOpen && <CartDropdown />}

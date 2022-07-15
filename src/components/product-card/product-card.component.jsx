@@ -7,12 +7,14 @@ import {
   ProductCardFooter,
   ProductPrice,
 } from "./product-card.styles";
-import { useContext } from "react";
-import { CartContext } from "../../context/cart.context";
-
+import { useSelector, useDispatch } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
+import { addItemToCart } from "../../store/cart/cart.action";
 const ProductCard = ({ product }) => {
-  const { name, imageURL, description, price, stock } = product;
-  const { addItemToCart } = useContext(CartContext);
+  const { name, imageURL, description, price } = product;
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
+  const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
   return (
     <ProductCardContainer>
       <ProductCardTitle>{name}</ProductCardTitle>
@@ -22,7 +24,7 @@ const ProductCard = ({ product }) => {
       </ProductCardDescription>
       <ProductCardFooter>
         <ProductPrice>{`MRP Rs.${price}`}</ProductPrice>
-        <Button onClick={() => addItemToCart(product)}>Buy Now</Button>
+        <Button onClick={addProductToCart}>Buy Now</Button>
       </ProductCardFooter>
     </ProductCardContainer>
   );
