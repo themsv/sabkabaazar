@@ -23,6 +23,8 @@ export const CartContainer = styled.div`
 
 export const CartCheaper = styled.div`
   background-color: #fff;
+  margin: 10px 0;
+  padding: 5px;
 
   display: flex;
   align-items: center;

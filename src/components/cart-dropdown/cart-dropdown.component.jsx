@@ -22,17 +22,18 @@ const CartDropdown = () => {
         </>
       ) : (
         <>
-          <p>Add items to Cart</p>
+          <h2>No items in your Cart</h2>
+          <p>Your favourite items are just a clicks away.</p>
           <CartCheaper>
             <img
               src="/static/images/lowest-price.png"
-              width="150"
-              height="50"
+              width="120"
+              height="40"
               alt="Lowest Price"
             />
-            <h3>No items in your Cart</h3>
-            <p>Your favourite items are just a clicks away.</p>
+            <p>You wont find it cheaper anywhere.</p>
           </CartCheaper>
+          <Button onClick={checkoutHandler}>Start Shopping</Button>
         </>
       )}
     </CartContainer>

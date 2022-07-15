@@ -1,6 +1,5 @@
 import { ReactComponent } from "../../assets/cart.svg";
 import styled from "styled-components";
-import { useState } from "react";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
@@ -21,14 +20,13 @@ const Logo = styled(ReactComponent)`
 `;
 
 const CartIcon = () => {
-  const [showCart, setShowCart] = useState(false);
-  const { cartCount } = useContext(CartContext);
+  const { cartCount, isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   return (
-    <CartIconContainer onClick={() => setShowCart(!showCart)}>
+    <CartIconContainer onClick={() => setIsCartOpen(!isCartOpen)}>
       <Logo />
       <p>{cartCount} Items</p>
-      {showCart && <CartDropdown />}
+      {isCartOpen && <CartDropdown />}
     </CartIconContainer>
   );
 };
