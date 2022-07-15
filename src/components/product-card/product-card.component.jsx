@@ -7,9 +7,12 @@ import {
   ProductCardFooter,
   ProductPrice,
 } from "./product-card.styles";
+import { useContext } from "react";
+import { CartContext } from "../../context/cart.context";
 
 const ProductCard = ({ product }) => {
   const { name, imageURL, description, price, stock } = product;
+  const { addItemToCart } = useContext(CartContext);
   return (
     <ProductCardContainer>
       <ProductCardTitle>{name}</ProductCardTitle>
@@ -19,7 +22,7 @@ const ProductCard = ({ product }) => {
       </ProductCardDescription>
       <ProductCardFooter>
         <ProductPrice>{`MRP Rs.${price}`}</ProductPrice>
-        <Button>Buy Now</Button>
+        <Button onClick={() => addItemToCart(product)}>Buy Now</Button>
       </ProductCardFooter>
     </ProductCardContainer>
   );

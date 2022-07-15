@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
+import CartIcon from "../../components/cart-icon/cart-icon.component.jsx";
 import {
   NavigationContainer,
   LogoImage,
@@ -19,6 +20,7 @@ const Navigation = () => {
           <NavLink to="/products">Products</NavLink>
           <NavLink to="/sign-in">SignIn</NavLink>
           <NavLink to="/register">Register</NavLink>
+          <CartIcon />
         </NavItems>
       </NavigationContainer>
       <Outlet />

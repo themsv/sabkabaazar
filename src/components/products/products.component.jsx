@@ -1,5 +1,5 @@
 import { PRDOUCTS } from "../../sabkabazaar";
-import ProductCard from "../../components/product-card/product-card.component";
+import ProductCard from "../product-card/product-card.component";
 import { ProductsContainer } from "./products.styles";
 const Products = () => {
   return (

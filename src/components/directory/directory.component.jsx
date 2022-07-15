@@ -4,9 +4,15 @@ import { DirectoryContainter } from "./directory.styles";
 const Directory = () => {
   return (
     <DirectoryContainter>
-      {CATEGORIES.map((category) => (
-        <DirectoryItem key={category.id} categoryData={category} />
-      ))}
+      {CATEGORIES.filter((category) => category.enabled).map(
+        (category, _index) => (
+          <DirectoryItem
+            key={category.id}
+            categoryData={category}
+            index={_index}
+          />
+        )
+      )}
     </DirectoryContainter>
   );
 };

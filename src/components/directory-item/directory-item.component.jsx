@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Button from "../button/button.component";
+import { Link } from "react-router-dom";
 import {
   DirectoryItemContainer,
   DirectoryImage,
@@ -7,20 +8,37 @@ import {
   DirectoryTitle,
   DirectoryDescription,
 } from "./directory-item.styles";
-const DirectoryItem = ({ categoryData }) => {
-  const { name, description, id, imageUrl, enabled } = categoryData;
+
+const DirectoryItem = ({ categoryData, index }) => {
+  const { name, description, id, imageUrl } = categoryData;
+
   return (
     <Fragment>
-      {enabled && (
-        <DirectoryItemContainer>
-          <DirectoryImage src={imageUrl} alt={name} />
-          <DirectoryTextBox>
-            <DirectoryTitle>{name}</DirectoryTitle>
-            <DirectoryDescription>{description}</DirectoryDescription>
-            <Button>{`Explore ${name}`}</Button>
-          </DirectoryTextBox>
-        </DirectoryItemContainer>
-      )}
+      <DirectoryItemContainer>
+        {index % 2 == 0 ? (
+          <>
+            <DirectoryImage src={imageUrl} alt={name} />
+            <DirectoryTextBox>
+              <DirectoryTitle>{name}</DirectoryTitle>
+              <DirectoryDescription>{description}</DirectoryDescription>
+              <Link to={`products/${id}`}>
+                <Button>{`Explore ${name}`}</Button>
+              </Link>
+            </DirectoryTextBox>
+          </>
+        ) : (
+          <>
+            <DirectoryTextBox>
+              <DirectoryTitle>{name}</DirectoryTitle>
+              <DirectoryDescription>{description}</DirectoryDescription>
+              <Link to={`products/${id}`}>
+                <Button>{`Explore ${name}`}</Button>
+              </Link>
+            </DirectoryTextBox>
+            <DirectoryImage src={imageUrl} alt={name} />
+          </>
+        )}
+      </DirectoryItemContainer>
     </Fragment>
   );
 };
