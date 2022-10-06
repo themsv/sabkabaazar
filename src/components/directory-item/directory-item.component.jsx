@@ -15,7 +15,7 @@ const DirectoryItem = ({ categoryData, index }) => {
   return (
     <Fragment>
       <DirectoryItemContainer>
-        {index % 2 == 0 ? (
+        {index % 2 === 0 ? (
           <>
             <DirectoryImage src={imageUrl} alt={name} />
             <DirectoryTextBox>

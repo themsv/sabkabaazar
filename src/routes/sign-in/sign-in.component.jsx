@@ -48,7 +48,7 @@ const SignIn = () => {
           name="password"
           value={password}
         />
-        <Button>Sign in</Button>
+        <Button onClick={resetFormFields}>Sign in</Button>
       </SignInForm>
     </SignInContainer>
   );
